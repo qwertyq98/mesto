@@ -1,0 +1,15 @@
+.element__like {
+  background-image: url("../../../images/heard.png");
+  background-color: transparent;
+  border: none;
+  height: 19px;
+  width: 22px;
+  outline: none;
+  padding: 0;
+  transition: opacity .2s linear;
+  background-size: cover;
+}
+
+.element__like:hover {
+  opacity: .6;
+}

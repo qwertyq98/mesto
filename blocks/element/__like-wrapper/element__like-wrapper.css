@@ -1,0 +1,7 @@
+.element__like-wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  padding-right: 5px;
+}
