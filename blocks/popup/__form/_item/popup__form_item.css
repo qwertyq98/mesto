@@ -14,3 +14,6 @@
   box-sizing: border-box;
 }
 
+.popup__form_item:focus {
+  outline: none;
+}

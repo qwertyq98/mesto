@@ -2,7 +2,7 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin: 25px 15px 31px 21px;
+  padding: 25px 15px 31px 21px;
   overflow: hidden;
   max-height: 23px;
 }

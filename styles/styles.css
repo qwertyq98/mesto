@@ -44,3 +44,4 @@
 @import url(../blocks/popup/__form/_item-name/popup__form_item-name.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
 @import url(../blocks/popup/__text/popup__text.css);
+@import url(../blocks/popup/_opened/popup_opened.css);

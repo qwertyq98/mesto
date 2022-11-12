@@ -3,10 +3,18 @@
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: 16px;
+  max-height: 39px;
+}
+
+@media screen and (max-width: 720px) {
+  .profile__content {
+    margin-bottom: 14px;
+    margin-left: 28px;
+  }
 }
 
 @media screen and (max-width: 440px) {
   .profile__content {
-    margin-bottom: 14px;
+    max-height: 26px;
   }
 }

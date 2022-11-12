@@ -1,7 +1,7 @@
 .popup__profile-edit {
   background-color: rgba(0,0,0,.5);
   position: fixed;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   bottom: 0;
