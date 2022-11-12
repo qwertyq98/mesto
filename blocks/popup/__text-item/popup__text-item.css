@@ -1,4 +1,4 @@
-.popup__text_item {
+.popup__text-item {
   display: block;
   border: 0;
   width: 100%;
@@ -14,6 +14,6 @@
   box-sizing: border-box;
 }
 
-.popup__text_item:focus {
+.popup__text-item:focus {
   outline: none;
 }
