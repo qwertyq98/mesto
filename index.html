@@ -12,15 +12,13 @@
   </header>
   <main class="content">
     <section class="profile content__profile">
-      <div class="profile__avatar-wrapper">
-        <img src="./images/image.jpg" class="profile__avatar" alt="Аватар">
-      </div>
+      <img src="./images/image.jpg" class="profile__avatar" alt="Аватар">
       <div class="profile__info">
         <div class="profile__content">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__button-edit" type="button"></button>
         </div>
-        <h2 class="profile__about">Исследователь океана</h2>
+        <p class="profile__about">Исследователь океана</p>
       </div>
       <button class="profile__button-add" type="button"></button>
     </section>
@@ -28,61 +26,43 @@
       <div class="element">
         <img src="./images/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Карачаевск">
         <div class="element__title-wrapper">
-          <h2 class="element__title">Карачаевск</h2>
-          <div class="element__like-wrapper">
-            <button type="button" class="element__like"></button>
-            <span class="element__like-text"></span>
-          </div>
+          <h3 class="element__title">Карачаевск</h3>
+          <button type="button" class="element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/kirill-pershin-1404681-unsplash.png" class="element__image" alt="Гора Эльбрус">
         <div class="element__title-wrapper">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <div class="element__like-wrapper">
-            <button type="button" class="element__like"></button>
-            <span class="element__like-text"></span>
-          </div>
+          <h3 class="element__title">Гора Эльбрус</h3>
+          <button type="button" class="element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/kirill-pershin-1556355-unsplash.png" class="element__image" alt="Домбай">
         <div class="element__title-wrapper">
-          <h2 class="element__title">Домбай</h2>
-          <div class="element__like-wrapper">
-            <button type="button" class="element__like"></button>
-            <span class="element__like-text"></span>
-          </div>
+          <h3 class="element__title">Домбай</h3>
+          <button type="button" class="element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/kirill-pershin-1404681-unsplash.png" class="element__image" alt="Гора Эльбрус">
         <div class="element__title-wrapper">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <div class="element__like-wrapper">
-            <button type="button" class="element__like"></button>
-            <span class="element__like-text"></span>
-          </div>
+          <h3 class="element__title">Гора Эльбрус</h3>
+          <button type="button" class="element__like"></button>
         </div>
       </div>
       <div class="element">
-        <img src="./images/kirill-pershin-1556355-unsplash.png" class="element__image" alt="Домбай">
+        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
         <div class="element__title-wrapper">
-          <h2 class="element__title">Домбай</h2>
-          <div class="element__like-wrapper">
-            <button type="button" class="element__like"></button>
-            <span class="element__like-text"></span>
-          </div>
+          <h3 class="element__title">Домбай</h3>
+          <button type="button" class="element__like"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Карачаево-Черкессия">
         <div class="element__title-wrapper">
-          <h2 class="element__title">Карачаево-Черкессия</h2>
-          <div class="element__like-wrapper">
-            <button type="button" class="element__like"></button>
-            <span class="element__like-text"></span>
-          </div>
+          <h3 class="element__title">Карачаево-Черкессия</h3>
+          <button type="button" class="element__like"></button>
         </div>
       </div>
     </section>
@@ -92,15 +72,15 @@
   </footer>
   <section class="popup">
     <div class="popup__container">
-      <form class="popup__form">
+      <form class="popup__form" name="edit">
         <h2 class="popup__text">Редактировать профиль</h2>
-        <input name="userName" type="text" class="popup__text-item popup__text-name" placeholder='Введите имя' required>
-        <input name="userAbout" type="text" class="popup__text-item popup__text-about" placeholder='Введите профессию' required>
+        <input name="userName" type="text" class="popup__text-item popup__text-item_name" placeholder='Введите имя' required>
+        <input name="userAbout" type="text" class="popup__text-item popup__text-item_about" placeholder='Введите профессию' required>
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
       <button class="popup__close-button"></button>
     </div>
   </section>
-  <script src="./script/script.js"></script>
+  <script src="scripts/script.js"></script>
 </body>
 </html>

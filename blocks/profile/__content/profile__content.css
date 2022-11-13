@@ -2,8 +2,7 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  margin-bottom: 16px;
-  max-height: 39px;
+  margin-bottom: 3px;
 }
 
 @media screen and (max-width: 720px) {
@@ -15,6 +14,6 @@
 
 @media screen and (max-width: 440px) {
   .profile__content {
-    max-height: 26px;
+    margin-bottom: 4px;
   }
 }

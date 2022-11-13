@@ -2,7 +2,6 @@
   margin-right: auto;
   max-width: 336px;
   width: 100%;
-  max-height: 73px;
 }
 
 @media screen and (max-width: 720px) {
@@ -12,11 +11,5 @@
     margin-bottom: 36px;
     text-align: center;
     width: max-content;
-  }
-}
-
-@media screen and (max-width: 440px) {
-  .profile__info {
-    max-height: 54px;
   }
 }

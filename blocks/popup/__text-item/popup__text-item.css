@@ -14,6 +14,10 @@
   box-sizing: border-box;
 }
 
+.popup__text-item:nth-last-of-type(1){
+  margin-bottom: 0;
+}
+
 .popup__text-item:focus {
   outline: none;
 }
