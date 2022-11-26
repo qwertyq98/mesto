@@ -23,56 +23,14 @@
       <button class="profile__button-add" type="button"></button>
     </section>
     <section class="elements content__elements">
-      <div class="element">
-        <img src="./images/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Карачаевск">
-        <div class="element__title-wrapper">
-          <h3 class="element__title">Карачаевск</h3>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/kirill-pershin-1404681-unsplash.png" class="element__image" alt="Гора Эльбрус">
-        <div class="element__title-wrapper">
-          <h3 class="element__title">Гора Эльбрус</h3>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/kirill-pershin-1556355-unsplash.png" class="element__image" alt="Домбай">
-        <div class="element__title-wrapper">
-          <h3 class="element__title">Домбай</h3>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/kirill-pershin-1404681-unsplash.png" class="element__image" alt="Гора Эльбрус">
-        <div class="element__title-wrapper">
-          <h3 class="element__title">Гора Эльбрус</h3>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Домбай">
-        <div class="element__title-wrapper">
-          <h3 class="element__title">Домбай</h3>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img src="./images/kirill-pershin-1088404-unsplash.png" class="element__image" alt="Карачаево-Черкессия">
-        <div class="element__title-wrapper">
-          <h3 class="element__title">Карачаево-Черкессия</h3>
-          <button type="button" class="element__like"></button>
-        </div>
-      </div>
     </section>
   </main>
   <footer class="footer">
     <p class="footer__text" lang="en">© 2022 Mesto Russia</p>
   </footer>
-  <section class="popup">
+  <section class="popup popup__edit-profile">
     <div class="popup__container">
-      <form class="popup__form" name="edit">
+      <form class="popup__form popup__form_name_profile" name="edit">
         <h2 class="popup__text">Редактировать профиль</h2>
         <input name="userName" type="text" class="popup__text-item popup__text-item_type_name" placeholder='Введите имя' required>
         <input name="userAbout" type="text" class="popup__text-item popup__text-item_type_info" placeholder='Введите профессию' required>
@@ -81,6 +39,36 @@
       <button class="popup__close-button" type="button"></button>
     </div>
   </section>
-  <script src="scripts/script.js"></script>
+  <section class="popup popup__add-cards">
+    <div class="popup__container">
+      <form class="popup__form popup__form_name_card" name="edit">
+        <h2 class="popup__text">Новое место</h2>
+        <input name="name" type="text" class="popup__text-item popup__text-item_type_name" placeholder='Название' required>
+        <input name="link" type="url" class="popup__text-item popup__text-item_type_url" placeholder='Ссылка на картинку' required>
+        <button class="popup__save-button" type="submit">Создать</button>
+      </form>
+      <button class="popup__close-button" type="button"></button>
+    </div>
+  </section>
+  <section class="popup popup__open-card">
+    <div class="popup__card-container">
+      <div class="popup__card">
+        <img class="popup__image">
+        <p class="popup__title"></p>
+      </div>
+      <button class="popup__close-button" type="button"></button>
+    </div>
+  </section>
+  <template id="element-template">
+    <div class="element">
+      <button class="element__trash" type="button"></button>
+      <img class="element__image">
+      <div class="element__title-wrapper">
+        <h3 class="element__title"></h3>
+        <button type="button" class="element__like"></button>
+      </div>
+    </div>
+  </template>
+  <script type="module" src="scripts/script.js"></script>
 </body>
 </html>

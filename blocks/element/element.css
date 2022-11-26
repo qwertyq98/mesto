@@ -4,5 +4,6 @@
   display: grid;
   grid-template-rows: 282px 1fr;
   overflow: hidden;
+  position: relative;
 }
 
