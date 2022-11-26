@@ -1,13 +1,13 @@
 import {initialCards} from './constants.js';
 
-const popupEditProfile = document.querySelector('.popup__edit-profile');
-const popupAddCard = document.querySelector('.popup__add-cards');
+const popupEditProfile = document.querySelector('.popup__edit_profile');
+const popupAddCard = document.querySelector('.popup__add_cards');
 const editButtonElement = document.querySelector('.profile__button-edit');
 const addButtonElement = document.querySelector('.profile__button-add');
 const popupCloseButtonElements = document.querySelectorAll('.popup__close-button');
 const cardNameInput = popupAddCard.querySelector('.popup__text-item_type_name');
 const cardLinkInput = popupAddCard.querySelector('.popup__text-item_type_url');
-const popupOpenCard = document.querySelector('.popup__open-card');
+const popupOpenCard = document.querySelector('.popup__open_card');
 
 
 // Находим форму в DOM
