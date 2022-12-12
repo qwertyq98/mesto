@@ -83,6 +83,7 @@ initialCards.forEach(function (item) {
 // Открытие попапа редактирования профиля
 
 editButtonElement.addEventListener('click', function () {
+  formElementProfile.reset();
   nameInput.value = profileNameElement.textContent;
   jobInput.value = profileAboutElement.textContent;
   openPopup(popupEditProfile);
