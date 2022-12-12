@@ -1,10 +1,10 @@
-.popup__text-item {
+.popup__input {
   display: block;
   border: 0;
   width: 100%;
   max-height: 27px;
   border-bottom: 1px solid rgba(0,0,0,.2);
-  margin: 0 0 30px;
+  margin: 0 0 5px;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -14,10 +14,6 @@
   box-sizing: border-box;
 }
 
-.popup__text-item:nth-last-of-type(1){
-  margin-bottom: 0;
-}
-
-.popup__text-item:focus {
+.popup__input:focus {
   outline: none;
 }

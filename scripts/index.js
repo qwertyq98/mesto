@@ -4,19 +4,19 @@ const popupEditProfile = document.querySelector('.popup_type_edit');
 const popupAddCard = document.querySelector('.popup_type_add');
 const editButtonElement = document.querySelector('.profile__button-edit');
 const addButtonElement = document.querySelector('.profile__button-add');
-const popupCloseButtonElements = document.querySelectorAll('.popup__close-button');
-const cardNameInput = popupAddCard.querySelector('.popup__text-item_type_name');
-const cardLinkInput = popupAddCard.querySelector('.popup__text-item_type_url');
+const popupCloseButtonElements = document.querySelectorAll('.popup__button_close');
+const cardNameInput = popupAddCard.querySelector('.popup__input_type_name');
+const cardLinkInput = popupAddCard.querySelector('.popup__input_type_url');
 const popupOpenCard = document.querySelector('.popup_type_open');
-
+const popups = document.querySelectorAll('.popup');
 
 // Находим форму в DOM
 const formElementProfile = popupEditProfile.querySelector('.popup__form_name_profile');// Воспользуйтесь методом querySelector()
 const formElementCard = popupAddCard.querySelector('.popup__form_name_card');
 
 // Находим поля формы в DOM
-const nameInput = formElementProfile.querySelector('.popup__text-item_type_name');// Воспользуйтесь инструментом .querySelector()
-const jobInput = formElementProfile.querySelector('.popup__text-item_type_info');// Воспользуйтесь инструментом .querySelector()
+const nameInput = formElementProfile.querySelector('.popup__input_type_name');// Воспользуйтесь инструментом .querySelector()
+const jobInput = formElementProfile.querySelector('.popup__input_type_info');// Воспользуйтесь инструментом .querySelector()
 
 // Выберите элементы, куда должны быть вставлены значения полей
 const profileNameElement = document.querySelector('.profile__name');
@@ -27,9 +27,11 @@ const cardsContainer = document.querySelector('.content__elements');
 // Попапы открытие/закрытие
 const openPopup = function (popupElement) {
   popupElement.classList.add('popup_opened');
+  document.addEventListener('keydown', keyHandler);
 }
 const closePopup = function (popupElement) {
   popupElement.classList.remove('popup_opened');
+  document.removeEventListener('keydown', keyHandler);
 }
 
 // Лайк
@@ -111,6 +113,7 @@ function addFormCardSubmitHandler (evt) {
     link: cardLinkInput.value
   };
   renderCard(newCard, cardsContainer);
+  formElementCard.reset();
 }
 formElementCard.addEventListener('submit', function (evt) {
   addFormCardSubmitHandler(evt);
@@ -134,3 +137,22 @@ formElementProfile.addEventListener('submit', function (evt) {
   sendFormSubmitHandler(evt);
   closePopup(popupEditProfile);
 });
+
+//Закрытие попапа по кликом на оверлей
+function closePopupByOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
+}
+
+popups.forEach(function (popup) {
+  popup.addEventListener('click', closePopupByOverlay);
+});
+
+//Закрытие попапа через ESC
+
+function keyHandler(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+  }
+}
