@@ -1,30 +1,26 @@
-import {initialCards} from './constants.js';
-
-const popupEditProfile = document.querySelector('.popup_type_edit');
-const popupAddCard = document.querySelector('.popup_type_add');
-const buttonEditPopupProfile = document.querySelector('.profile__button-edit');
-const buttonAddPopupProfile = document.querySelector('.profile__button-add');
-const popupCloseButtonElements = document.querySelectorAll('.popup__button_close');
-const cardNameInput = popupAddCard.querySelector('.popup__input_type_name');
-const cardLinkInput = popupAddCard.querySelector('.popup__input_type_url');
-const popupOpenCard = document.querySelector('.popup_type_open');
-const popups = document.querySelectorAll('.popup');
-const popupImage = popupOpenCard.querySelector('.popup__image');
-const popupTitle = popupOpenCard.querySelector('.popup__title');
-
-// Находим форму в DOM
-const formElementProfile = popupEditProfile.querySelector('.popup__form_name_profile');// Воспользуйтесь методом querySelector()
-const formElementCard = popupAddCard.querySelector('.popup__form_name_card');
-
-// Находим поля формы в DOM
-const nameInput = formElementProfile.querySelector('.popup__input_type_name');// Воспользуйтесь инструментом .querySelector()
-const jobInput = formElementProfile.querySelector('.popup__input_type_info');// Воспользуйтесь инструментом .querySelector()
-
-// Выберите элементы, куда должны быть вставлены значения полей
-const profileNameElement = document.querySelector('.profile__name');
-const profileAboutElement = document.querySelector('.profile__about');
-
-const cardsContainer = document.querySelector('.content__elements');
+import {
+  initialCards,
+  popupEditProfile,
+  popupAddCard,
+  buttonEditPopupProfile,
+  buttonAddPopupProfile,
+  popupCloseButtonElements,
+  cardNameInput,
+  cardLinkInput,
+  popupOpenCard,
+  popups,
+  popupImage,
+  popupTitle,
+  formElementProfile,
+  formElementCard,
+  nameInput,
+  jobInput,
+  profileNameElement,
+  profileAboutElement,
+  cardsContainer
+} from './constants.js';
+import Card from './Card.js'
+import FormValidator from './FormValidator.js';
 
 // Попапы открытие/закрытие
 const openPopup = function (popupElement) {
@@ -35,12 +31,6 @@ const closePopup = function (popupElement) {
   popupElement.classList.remove('popup_opened');
   document.removeEventListener('keydown', keyHandler);
 }
-
-// Лайк
-const toggleLike = (element) => {
-  element.classList.toggle('element__like_active');
-}
-
 // Закрытие любого попапа
 
 popupCloseButtonElements.forEach(function (item) {
@@ -48,7 +38,6 @@ popupCloseButtonElements.forEach(function (item) {
     closePopup(evt.target.closest('.popup'));
   });
 });
-
 
 //Закрытие попапа через ESC
 
@@ -123,42 +112,35 @@ formElementProfile.addEventListener('submit', function (evt) {
   closePopup(popupEditProfile);
 });
 
-// Создать карточки
-
-const createCard = item => {
-  const cardTemplate = document.querySelector('#element-template').content;
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  const imageElement = cardElement.querySelector('.element__image');
-  const likeElement = cardElement.querySelector('.element__like');
-  const trashElement = cardElement.querySelector('.element__trash');
-
-  imageElement.src = item.link;
-  imageElement.alt = item.name;
-  cardElement.querySelector('.element__title').textContent = item.name;
-
-  likeElement.addEventListener('click', function () {
-    toggleLike(likeElement);
-  });
-  trashElement.addEventListener('click', function () {
-    trashElement.closest('.element').remove();
-  });
-  imageElement.addEventListener('click', function () {
-    popupImage.src = item.link;
-    popupImage.alt = item.name;
-    popupTitle.textContent = item.name;
-    openPopup(popupOpenCard);
-  });
-
-  return cardElement;
-}
-
 // Добавить карточки
 
 const renderCard = (item, container) => {
-  const cardElement = createCard(item);
+  const card = new Card(item, '#element-template', function(name, src) {
+    popupImage.src = src;
+    popupImage.alt = name;
+    popupTitle.textContent = name;
+
+    openPopup(popupOpenCard);
+  });
+  const cardElement = card.generateCard();
+
   container.prepend(cardElement);
 };
 
 initialCards.forEach(function (item) {
   renderCard(item, cardsContainer);
+});
+
+// Валидация форм
+
+document.querySelectorAll('form').forEach(form => {
+  const formValidator = new FormValidator(form, {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__input_type_error',
+    errorClass: 'popup__error_visible'
+  });
+  formValidator.enableValidation();
 });
