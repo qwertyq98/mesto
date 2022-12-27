@@ -25,23 +25,29 @@ import FormValidator from './FormValidator.js';
 // Попапы открытие/закрытие
 const openPopup = function (popupElement) {
   popupElement.classList.add('popup_opened');
-  document.addEventListener('keydown', keyHandler);
+  document.addEventListener('keydown', handleEscape);
 }
 const closePopup = function (popupElement) {
   popupElement.classList.remove('popup_opened');
-  document.removeEventListener('keydown', keyHandler);
+  document.removeEventListener('keydown', handleEscape);
 }
-// Закрытие любого попапа
 
-popupCloseButtonElements.forEach(function (item) {
-  item.addEventListener('click',function (evt) {
-    closePopup(evt.target.closest('.popup'));
-  });
-});
+// Закрытие любого попапа крестик и оверлей
+
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (
+        evt.target.classList.contains('popup_opened') ||
+        evt.target.classList.contains('popup__button_close')
+      ) {
+          closePopup(popup);
+      }
+  })
+})
 
 //Закрытие попапа через ESC
 
-function keyHandler(evt) {
+function handleEscape(evt) {handleEscape
   if (evt.key === 'Escape') {
     closePopup(document.querySelector('.popup_opened'));
   }
@@ -49,7 +55,7 @@ function keyHandler(evt) {
 
 //Добавление карточки через форму
 
-function addFormCardSubmitHandler (evt) {
+function handleAddFormCardSubmit (evt) {
   evt.preventDefault();
 
   const newCard = {
@@ -60,13 +66,13 @@ function addFormCardSubmitHandler (evt) {
   formElementCard.reset();
 }
 formElementCard.addEventListener('submit', function (evt) {
-  addFormCardSubmitHandler(evt);
+  handleAddFormCardSubmit(evt);
   closePopup(popupAddCard);
 });
 
 // Обработчик «отправки» формы
 
-function sendFormSubmitHandler (evt) {
+function handleProfileFormSubmit (evt) {
   evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 
 // Получите значение полей jobInput и nameInput из свойства value
@@ -76,18 +82,6 @@ function sendFormSubmitHandler (evt) {
   profileNameElement.textContent = nameValue;
   profileAboutElement.textContent = aboutValue;
 }
-
-//Закрытие попапа по кликом на оверлей
-
-function closePopupByOverlay(evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.target);
-  }
-}
-
-popups.forEach(function (popup) {
-  popup.addEventListener('click', closePopupByOverlay);
-});
 
 // Открытие попапа редактирования профиля
 
@@ -108,13 +102,13 @@ buttonAddPopupProfile.addEventListener('click', function () {
 // Прикрепляем обработчик к форме: он будет следить за событием “submit” - «отправка»
 
 formElementProfile.addEventListener('submit', function (evt) {
-  sendFormSubmitHandler(evt);
+  handleProfileFormSubmit(evt);
   closePopup(popupEditProfile);
 });
 
-// Добавить карточки
+// Создать карточки и добавить их в верстку
 
-const renderCard = (item, container) => {
+function createCard(item) {
   const card = new Card(item, '#element-template', function(name, src) {
     popupImage.src = src;
     popupImage.alt = name;
@@ -122,8 +116,11 @@ const renderCard = (item, container) => {
 
     openPopup(popupOpenCard);
   });
-  const cardElement = card.generateCard();
+  return card.generateCard();
+}
 
+const renderCard = (item, container) => {
+  const cardElement = createCard(item);
   container.prepend(cardElement);
 };
 

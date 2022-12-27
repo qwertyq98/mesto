@@ -38,7 +38,7 @@ const popupImage = popupOpenCard.querySelector('.popup__image');
 const popupTitle = popupOpenCard.querySelector('.popup__title');
 
 // Находим форму в DOM
-const formElementProfile = popupEditProfile.querySelector('.popup__form_name_profile');// Воспользуйтесь методом querySelector()
+const formElementProfile = popupEditProfile.querySelector('.popup__form_name_profile');
 const formElementCard = popupAddCard.querySelector('.popup__form_name_card');
 
 // Находим поля формы в DOM

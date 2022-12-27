@@ -20,11 +20,11 @@ export default class FormValidator {
   };
 
   _setEventListeners() {
-    this._toggleButtonState(!this._hasInvalidInput(this._inputs));
+    this._toggleButtonState(!this._hasInvalidInput());
     this._inputs.forEach(input => {
       input.addEventListener('input', evt => {
         this._checkInputValidity(input);
-        this._toggleButtonState(!this._hasInvalidInput(this._inputs));
+        this._toggleButtonState(!this._hasInvalidInput());
       })
     });
     this._form.addEventListener('reset', () => {
@@ -38,8 +38,10 @@ export default class FormValidator {
   _toggleButtonState(state) {
     if (state) {
       this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.disabled = false;
     } else {
       this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.disabled = true;
     }
   };
 
