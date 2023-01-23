@@ -29,13 +29,6 @@ const popupEditProfile = document.querySelector('.popup_type_edit');
 const popupAddCard = document.querySelector('.popup_type_add');
 const buttonEditPopupProfile = document.querySelector('.profile__button-edit');
 const buttonAddPopupProfile = document.querySelector('.profile__button-add');
-const popupCloseButtonElements = document.querySelectorAll('.popup__button_close');
-const cardNameInput = popupAddCard.querySelector('.popup__input_type_name');
-const cardLinkInput = popupAddCard.querySelector('.popup__input_type_url');
-const popupOpenCard = document.querySelector('.popup_type_open');
-const popups = document.querySelectorAll('.popup');
-const popupImage = popupOpenCard.querySelector('.popup__image');
-const popupTitle = popupOpenCard.querySelector('.popup__title');
 
 // Находим форму в DOM
 const formElementProfile = popupEditProfile.querySelector('.popup__form_name_profile');
@@ -45,29 +38,24 @@ const formElementCard = popupAddCard.querySelector('.popup__form_name_card');
 const nameInput = formElementProfile.querySelector('.popup__input_type_name');// Воспользуйтесь инструментом .querySelector()
 const jobInput = formElementProfile.querySelector('.popup__input_type_info');// Воспользуйтесь инструментом .querySelector()
 
-const profileNameElement = document.querySelector('.profile__name');
-const profileAboutElement = document.querySelector('.profile__about');
-
-const cardsContainer = document.querySelector('.content__elements');
+const profileNameSelector = '.profile__name';
+const profileAboutSelector = '.profile__about';
+const cardListSection = '.content__elements';
+const popupOpenCard = '.popup_type_open';
+const popupAddCardSelector = '.popup_type_add';
+const popupEditProfileSelector = '.popup_type_edit';
 
 export {
   initialCards,
-  popupEditProfile,
-  popupAddCard,
+  popupEditProfileSelector,
+  popupAddCardSelector,
   buttonEditPopupProfile,
   buttonAddPopupProfile,
-  popupCloseButtonElements,
-  cardNameInput,
-  cardLinkInput,
   popupOpenCard,
-  popups,
-  popupImage,
-  popupTitle,
-  formElementProfile,
-  formElementCard,
   nameInput,
   jobInput,
-  profileNameElement,
-  profileAboutElement,
-  cardsContainer
+  profileNameSelector,
+  profileAboutSelector,
+  cardListSection
 }
+

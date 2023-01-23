@@ -1,0 +1,23 @@
+{
+  "name": "yandex_praktikum",
+  "version": "0.0.1",
+  "description": "Сервис Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки. ### Технологии",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qwertyq98/mesto.git"
+  },
+  "author": "Anastsia Kapustina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qwertyq98/mesto/issues"
+  },
+  "homepage": "https://github.com/qwertyq98/mesto#readme",
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
