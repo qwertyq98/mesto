@@ -26,13 +26,11 @@ const initialCards = [
 ]
 
 const popupEditProfile = document.querySelector('.popup_type_edit');
-const popupAddCard = document.querySelector('.popup_type_add');
 const buttonEditPopupProfile = document.querySelector('.profile__button-edit');
 const buttonAddPopupProfile = document.querySelector('.profile__button-add');
 
 // Находим форму в DOM
 const formElementProfile = popupEditProfile.querySelector('.popup__form_name_profile');
-const formElementCard = popupAddCard.querySelector('.popup__form_name_card');
 
 // Находим поля формы в DOM
 const nameInput = formElementProfile.querySelector('.popup__input_type_name');// Воспользуйтесь инструментом .querySelector()
@@ -45,6 +43,15 @@ const popupOpenCard = '.popup_type_open';
 const popupAddCardSelector = '.popup_type_add';
 const popupEditProfileSelector = '.popup_type_edit';
 
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}
+
 export {
   initialCards,
   popupEditProfileSelector,
@@ -56,6 +63,7 @@ export {
   jobInput,
   profileNameSelector,
   profileAboutSelector,
-  cardListSection
+  cardListSection,
+  validationConfig
 }
 

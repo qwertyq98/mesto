@@ -32,21 +32,24 @@ export default class Card {
     return cardElement;
   }
 
-  _setEventListeners() {
-    this._likeElement.addEventListener('click', () => {
-      this._toggleLike();
-    });
-
-    this._trashElement.addEventListener('click', () => {
-      this._element.remove();
-    });
-
-    this._imageElement.addEventListener('click', () => {
-      this._handleCardClick(this._title, this._src);
-    });
-  }
-
   _toggleLike() {
     this._likeElement.classList.toggle('element__like_active');
+  }
+
+  _handleDeleteElement() {
+    this._element.remove();
+    this._element = null;
+  }
+
+  _handleClickImage() {
+    this._handleCardClick(this._title, this._src);
+  }
+
+  _setEventListeners() {
+    this._likeElement.addEventListener('click', this._toggleLike.bind(this));
+
+    this._trashElement.addEventListener('click', this._handleDeleteElement.bind(this));
+
+    this._imageElement.addEventListener('click', this._handleClickImage.bind(this));
   }
 }

@@ -9,8 +9,9 @@ import {
   jobInput,
   profileNameSelector,
   profileAboutSelector,
-  cardListSection
-} from '../components/constants.js';
+  cardListSection,
+  validationConfig
+} from '../utils/constants.js';
 import Card from '../components/Card.js'
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
@@ -21,13 +22,13 @@ import './index.css';
 
 // Создать карточки и добавить их в верстку
 
-const cardsList = new Section({
+const cardsSection = new Section({
   items: initialCards,
-  renderer: rendererCard,
+  renderer: renderCard,
 },
   cardListSection
 );
-cardsList.renderItems();
+cardsSection.renderItems();
 
 // Открытие попапа с изоображением
 
@@ -43,29 +44,40 @@ function handleCardClick(name, link) {
 
 // Создать карточку
 
-function rendererCard(item) {
-  const card = new Card(item, '#element-template', handleCardClick);
-  const cardElement = card.generateCard();
-  cardsList.addItem(cardElement);
+function createCard(cardData) {
+  const card = new Card(cardData, '#element-template', handleCardClick);
+  return card.generateCard();
+  // cardsSection.addItem(cardElement);
+}
+
+// Добавить карточку в верстку
+
+function renderCard(cardData) {
+  const cardElement = createCard(cardData);
+  cardsSection.addItem(cardElement);
 }
 
 // Информация о пользователе
 
 const userInfo = new UserInfo({ userNameSelector: profileNameSelector, userAboutSelector: profileAboutSelector})
 
-// Попап редактирования профиля  - создание
+// Попап редактирования профиля - создание
 
 const popupNewEditProfile = new PopupWithForm(popupEditProfileSelector, (values) => {
   userInfo.setUserInfo({
     name: values.userName,
     info: values.userAbout
   });
+  popupNewEditProfile.close();
 });
 popupNewEditProfile.setEventListeners();
 
 // Попап создания карточки - создание
 
-const popupNewCreateCard = new PopupWithForm(popupAddCardSelector, rendererCard);
+const popupNewCreateCard = new PopupWithForm(popupAddCardSelector, (inputValues) => {
+  renderCard(inputValues);
+  popupNewCreateCard.close();
+});
 popupNewCreateCard.setEventListeners();
 
 // Открытие попапа редактирования профиля
@@ -86,13 +98,6 @@ buttonAddPopupProfile.addEventListener('click', function () {
 // Валидация форм
 
 document.querySelectorAll('form').forEach(form => {
-  const formValidator = new FormValidator(form, {
-    formSelector: '.popup__form',
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button',
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__input_type_error',
-    errorClass: 'popup__error_visible'
-  });
+  const formValidator = new FormValidator(form, validationConfig);
   formValidator.enableValidation();
 });
