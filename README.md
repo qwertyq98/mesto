@@ -8,6 +8,7 @@
 * CSS
 * БЭМ
 * Java Script
+* Webpack
 
 **Figma**
 
