@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Место</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+<body class="page">
+  <header class="header">
+    <div class="header__logo"></div>
+  </header>
+  <main class="content">
+    <section class="profile content__profile">
+      <img src="images/image.6163c2039d1f0eb8d7ca.jpg" class="profile__avatar" alt="Аватар">
+      <div class="profile__info">
+        <div class="profile__content">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button class="profile__button-edit" type="button"></button>
+        </div>
+        <p class="profile__about">Исследователь океана</p>
+      </div>
+      <button class="profile__button-add" type="button"></button>
+    </section>
+    <section class="elements content__elements">
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__text" lang="en">© 2023 Mesto Russia</p>
+  </footer>
+  <div class="popup popup_type_edit">
+    <div class="popup__container">
+      <form class="popup__form popup__form_name_profile" name="edit" novalidate>
+        <h2 class="popup__text">Редактировать профиль</h2>
+        <input name="userName" type="text" id="userName-input" minlength="2" maxlength="40" class="popup__input popup__input_type_name"
+        placeholder='Введите имя' required>
+        <span class="popup__error userName-input-error" ></span>
+        <input name="userAbout" type="text" id="userAbout-input" minlength="2" maxlength="200" class="popup__input popup__input_type_info"
+        placeholder='Введите профессию' required>
+        <span class="popup__error userAbout-input-error"></span>
+        <button class="popup__button popup__button_save" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__button popup__button_close" type="button"></button>
+    </div>
+  </div>
+  <div class="popup popup_type_add">
+    <div class="popup__container">
+      <form class="popup__form popup__form_name_card" name="edit" novalidate>
+        <h2 class="popup__text">Новое место</h2>
+        <input name="name" type="text" id="name-input" minlength="2" maxlength="30" class="popup__input popup__input_type_name"
+        placeholder='Название' required>
+        <span class="popup__error name-input-error"></span>
+        <input name="link" type="url" id="link-input" class="popup__input popup__input_type_url" placeholder='Ссылка на картинку' required>
+        <span class="popup__error link-input-error"></span>
+        <button class="popup__button popup__button_save" type="submit">Создать</button>
+      </form>
+      <button class="popup__button popup__button_close" type="button"></button>
+    </div>
+  </div>
+  <div class="popup popup_type_open">
+    <div class="popup__card-container">
+      <div class="popup__card">
+        <img class="popup__image" src="#" alt="">
+        <p class="popup__title"></p>
+      </div>
+      <button class="popup__button popup__button_close" type="button"></button>
+    </div>
+  </div>
+  <template id="element-template">
+    <div class="element">
+      <button class="element__trash" type="button"></button>
+      <img class="element__image" src="#" alt="">
+      <div class="element__title-wrapper">
+        <h3 class="element__title"></h3>
+        <button type="button" class="element__like"></button>
+      </div>
+    </div>
+  </template>
+</body>
+</html>
