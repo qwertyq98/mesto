@@ -11,13 +11,16 @@
   </header>
   <main class="content">
     <section class="profile content__profile">
-      <img src="images/image.6163c2039d1f0eb8d7ca.jpg" class="profile__avatar" alt="Аватар">
+      <div class="profile__avatar-wrapper">
+        <img src="#" class="profile__avatar" alt="Аватар">
+        <button class="profile__button"></button>
+      </div>
       <div class="profile__info">
         <div class="profile__content">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name"></h1>
           <button class="profile__button-edit" type="button"></button>
         </div>
-        <p class="profile__about">Исследователь океана</p>
+        <p class="profile__about"></p>
       </div>
       <button class="profile__button-add" type="button"></button>
     </section>
@@ -65,13 +68,36 @@
       <button class="popup__button popup__button_close" type="button"></button>
     </div>
   </div>
+  <div class="popup popup_type_check">
+    <div class="popup__container">
+      <form class="popup__form popup__form_name_check" name="check" novalidate>
+        <h2 class="popup__text_check">Вы уверены?</h2>
+        <button class="popup__button popup__button_save" type="submit">Да</button>
+      </form>
+      <button class="popup__button popup__button_close" type="button"></button>
+    </div>
+  </div>
+  <div class="popup popup_type_avatar">
+    <div class="popup__container">
+      <form class="popup__form popup__form_name_avatar" name="avatar" novalidate>
+        <h2 class="popup__text">Обновить аватар</h2>
+        <input name="avatar" type="url" id="avatar-input" class="popup__input popup__input_type_url" placeholder='Ссылка на картинку' required>
+        <span class="popup__error avatar-input-error"></span>
+        <button class="popup__button popup__button_save" type="submit">Сохранить</button>
+      </form>
+      <button class="popup__button popup__button_close" type="button"></button>
+    </div>
+  </div>
   <template id="element-template">
     <div class="element">
       <button class="element__trash" type="button"></button>
       <img class="element__image" src="#" alt="">
       <div class="element__title-wrapper">
         <h3 class="element__title"></h3>
-        <button type="button" class="element__like"></button>
+        <div class="element__like-wrapper">
+          <button type="button" class="element__like"></button>
+          <span class="element__like_value"></div>
+        </div>
       </div>
     </div>
   </template>
