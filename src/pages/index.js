@@ -4,8 +4,6 @@ import {
   buttonEditPopupProfile,
   buttonAddPopupProfile,
   popupOpenCard,
-  nameInput,
-  jobInput,
   profileNameSelector,
   profileAboutSelector,
   cardListSection,
@@ -44,11 +42,10 @@ const cardsSection = new Section({
 // Создать карточки и добавить их в верстку и информация о пользователе
 
 Promise.all([api.getInitialCards(), api.getUserInfo()])
-  .then(data => {
-    userInfo.setUserInfo(data[1]);
-    userInfo.setUserAvatar(data[1].avatar);
-    data[0].reverse();
-    cardsSection.renderItems(data[0]);
+  .then(([cards, userData]) => {
+    userInfo.setUserInfo(userData);
+    cards.reverse();
+    cardsSection.renderItems(cards);
   })
   .catch((err) => {
     console.log(err);
@@ -120,28 +117,28 @@ const userInfo = new UserInfo({
 // Попап редактирования профиля - создание
 
 const popupNewEditProfile = new PopupWithForm(popupEditProfileSelector, (values) => {
-  popupNewEditProfile.setButtonText('Сохранение...');
+  popupNewEditProfile.renderLoading(true);
   api.setUserInfoPopap(values)
     .then(data => {
       userInfo.setUserInfo(data);
       popupNewEditProfile.close();
     })
     .catch((err) => console.log(err))
-    .finally(() => popupNewEditProfile.setButtonText('Сохранить'));
+    .finally(() => popupNewEditProfile.renderLoading(false));
 });
 popupNewEditProfile.setEventListeners();
 
 // Попап редактирования аватара
 
 const popupEditProfileAvatar = new PopupWithForm(popupEditAvatarSelector, (inputValue) => {
-  popupEditProfileAvatar.setButtonText('Сохранение...');
+  popupEditProfileAvatar.renderLoading(true);
   api.changeUserAvatar(inputValue)
     .then(data => {
-      userInfo.setUserAvatar(data.avatar);
+      userInfo.setUserInfo(data);
       popupEditProfileAvatar.close();
     })
     .catch((err) => console.log(err))
-    .finally(() => popupEditProfileAvatar.setButtonText('Сохранить'));
+    .finally(() => popupEditProfileAvatar.renderLoading(false));
 })
 
 // Открытие попапа редактирования аватара
@@ -154,7 +151,7 @@ popupEditProfileAvatar.setEventListeners();
 // Попап создания карточки - создание
 
 const popupNewCreateCard = new PopupWithForm(popupAddCardSelector, (inputValues) => {
-  popupNewCreateCard.setButtonText('Сохранение...');
+  popupNewCreateCard.renderLoading(true);
   api.addNewCard(inputValues)
     .then(data => {
       renderCard(data);
@@ -163,7 +160,7 @@ const popupNewCreateCard = new PopupWithForm(popupAddCardSelector, (inputValues)
     .catch((err) => {
       console.log(err);
     })
-    .finally(() => popupNewCreateCard.setButtonText('Создать'));
+    .finally(() => popupNewCreateCard.renderLoading(false));
 });
 popupNewCreateCard.setEventListeners();
 
@@ -171,8 +168,10 @@ popupNewCreateCard.setEventListeners();
 
 buttonEditPopupProfile.addEventListener('click', function () {
   const userData = userInfo.getUserInfo();
-  nameInput.value = userData.name;
-  jobInput.value = userData.info;
+  popupNewEditProfile.setInputValues({
+    userName: userData.name,
+    userAbout: userData.info
+  });
   popupNewEditProfile.open();
 });
 

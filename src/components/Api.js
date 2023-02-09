@@ -4,14 +4,18 @@ export default class Api {
     this.headers = headers;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка ${res.status}`);
+  }
+
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
       headers: this.headers
     })
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(this._checkResponse);
   }
 
   addNewCard(data) {
@@ -23,10 +27,7 @@ export default class Api {
         link: data.link
       })
     })
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(this._checkResponse);
   }
 
   getUserInfo() {
@@ -34,10 +35,7 @@ export default class Api {
       method: 'GET',
       headers: this.headers,
     })
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(this._checkResponse);
   }
 
   setUserInfoPopap(data) {
@@ -49,10 +47,7 @@ export default class Api {
         about: data.userAbout
       })
     })
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(this._checkResponse);
   }
 
   deleteCard(id) {
@@ -60,10 +55,7 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(this._checkResponse);
   }
 
   like(id) {
@@ -71,10 +63,7 @@ export default class Api {
       method: 'PUT',
       headers: this.headers,
     })
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(this._checkResponse);
   }
 
   deleteLike(_id) {
@@ -82,10 +71,7 @@ export default class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(this._checkResponse);
   }
 
   changeUserAvatar(data) {
@@ -96,10 +82,6 @@ export default class Api {
         avatar: data.avatar
       })
     })
-    .then(res => res.json())
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(this._checkResponse);
   }
 }
-

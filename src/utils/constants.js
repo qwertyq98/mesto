@@ -4,11 +4,7 @@ const buttonAddPopupProfile = document.querySelector('.profile__button-add');
 const buttonEditAvatar = document.querySelector('.profile__button');
 
 // Находим форму в DOM
-const formElementProfile = popupEditProfile.querySelector('.popup__form_name_profile');
-
-// Находим поля формы в DOM
-const nameInput = formElementProfile.querySelector('.popup__input_type_name');// Воспользуйтесь инструментом .querySelector()
-const jobInput = formElementProfile.querySelector('.popup__input_type_info');// Воспользуйтесь инструментом .querySelector()
+const formElementProfile = document.forms['edit'];
 
 const profileNameSelector = '.profile__name';
 const profileAboutSelector = '.profile__about';
@@ -35,8 +31,6 @@ export {
   buttonEditPopupProfile,
   buttonAddPopupProfile,
   popupOpenCard,
-  nameInput,
-  jobInput,
   profileNameSelector,
   profileAboutSelector,
   cardListSection,
